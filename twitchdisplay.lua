@@ -16,7 +16,7 @@
 -- startup
 
 -- Twitch Name of the Streamer
-streamid = "coolacid"
+streamid = "Pistachiee"
 
 -- Set the Y line for where you want the different bits to go.
 line_streamer = 1
@@ -64,7 +64,7 @@ m.setTextColor(colors.blue)
 m.setTextScale(1)
 
 function getFollowers()
-  str = http.get("https://api.twitch.tv/kraken/channels/" .. streamid .. "/follows?limit=1").readAll()
+  str = http.get("https://api.twitch.tv/kraken/channels/" .. Pistachiee .. "/follows?limit=1").readAll()
   obj = JSON:decode(str)
   follows = obj._total
   follower = obj.follows[1].user.name
@@ -73,7 +73,7 @@ function getFollowers()
 end
 
 function getViewerCount()
-  str = http.get("https://api.twitch.tv/kraken/streams/" .. streamid).readAll()
+  str = http.get("https://api.twitch.tv/kraken/streams/" .. Pistachiee).readAll()
   obj = JSON:decode(str)
   if obj.stream == nil then
     return nil
@@ -106,18 +106,18 @@ while true do
     if live == nil then
       m.setBackgroundColor(colors.white)
       m.clear()
-      localwrite(streamid, justify_streamer, line_streamer)
+      localwrite(Pistachiee, justify_streamer, line_streamer)
       localwrite("Live Viewers: Offline", justify_viewers, line_viewers)
     else
       m.setBackgroundColor(colors.yellow)
       m.clear()
-      localwrite(streamid, justify_streamer, line_streamer)
+      localwrite(Pistachiee, justify_streamer, line_streamer)
       localwrite("Live Viewers: " .. live, justify_viewers, line_viewers)
     end
   else
       m.setBackgroundColor(colors.white)
       m.clear()
-      localwrite(streamid, justify_streamer, line_streamer)
+      localwrite(Pistachiee, justify_streamer, line_streamer)
       localwrite("Live Viewers: ERROR", justify_viewers, line_viewers)
   end
 
